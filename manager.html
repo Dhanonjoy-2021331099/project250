@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nayem Restaurant - Manager Panel</title>
+    <link rel="stylesheet" href="manager.css">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>Nayem Restaurant - Manager Panel</h2>
+        </div>
+        
+        <div class="nav-controls">
+            <button id="themeToggle" class="control-btn">🌙</button>
+            <button id="langToggle" class="control-btn">বাংলা</button>
+            <button id="backToDashboard" class="control-btn" data-en="Back to Dashboard" data-bn="ড্যাশবোর্ডে ফিরুন">Back to Dashboard</button>
+        </div>
+    </nav>
+
+    <div class="manager-container">
+        <div class="manager-header">
+            <h1 data-en="Product Management" data-bn="পণ্য ব্যবস্থাপনা">Product Management</h1>
+            <button class="add-product-btn" id="addProductBtn" data-en="Add New Product" data-bn="নতুন পণ্য যোগ করুন">Add New Product</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="filter-btn active" data-category="all" data-en="All" data-bn="সব">All</button>
+            <button class="filter-btn" data-category="breakfast" data-en="Breakfast" data-bn="নাস্তা">Breakfast</button>
+            <button class="filter-btn" data-category="lunch" data-en="Lunch" data-bn="দুপুরের খাবার">Lunch</button>
+            <button class="filter-btn" data-category="dinner" data-en="Dinner" data-bn="রাতের খাবার">Dinner</button>
+            <button class="filter-btn" data-category="snacks" data-en="Snacks" data-bn="নাস্তা">Snacks</button>
+            <button class="filter-btn" data-category="beverages" data-en="Beverages" data-bn="পানীয়">Beverages</button>
+        </div>
+
+        <!-- Products Management Table -->
+        <div class="products-table-container">
+            <table class="products-table" id="productsTable">
+                <thead>
+                    <tr>
+                        <th data-en="Image" data-bn="ছবি">Image</th>
+                        <th data-en="Name" data-bn="নাম">Name</th>
+                        <th data-en="Category" data-bn="বিভাগ">Category</th>
+                        <th data-en="Price (BDT)" data-bn="দাম (টাকা)">Price (BDT)</th>
+                        <th data-en="Actions" data-bn="কার্যক্রম">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="productsTableBody">
+                    <!-- Products will be loaded here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" data-en="Add New Product" data-bn="নতুন পণ্য যোগ করুন">Add New Product</h3>
+                <button class="close-btn" id="closeModal">&times;</button>
+            </div>
+            <form id="productForm">
+                <div class="form-group">
+                    <label data-en="Product Name:" data-bn="পণ্যের নাম:">Product Name:</label>
+                    <input type="text" id="productName" required>
+                </div>
+                <div class="form-group">
+                    <label data-en="Category:" data-bn="বিভাগ:">Category:</label>
+                    <select id="productCategory" required>
+                        <option value="breakfast" data-en="Breakfast" data-bn="নাস্তা">Breakfast</option>
+                        <option value="lunch" data-en="Lunch" data-bn="দুপুরের খাবার">Lunch</option>
+                        <option value="dinner" data-en="Dinner" data-bn="রাতের খাবার">Dinner</option>
+                        <option value="snacks" data-en="Snacks" data-bn="নাস্তা">Snacks</option>
+                        <option value="beverages" data-en="Beverages" data-bn="পানীয়">Beverages</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label data-en="Price (BDT):" data-bn="দাম (টাকা):">Price (BDT):</label>
+                    <input type="number" id="productPrice" min="0" step="0.01" required>
+                </div>
+                <div class="form-group">
+                    <label data-en="Image URL:" data-bn="ছবির URL:">Image URL:</label>
+                    <input type="url" id="productImage" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn" data-en="Save Product" data-bn="পণ্য সংরক্ষণ করুন">Save Product</button>
+                    <button type="button" class="cancel-btn" id="cancelBtn" data-en="Cancel" data-bn="বাতিল">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Manager Password Modal -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 data-en="Manager Authentication" data-bn="ম্যানেজার প্রমাণীকরণ">Manager Authentication</h3>
+            </div>
+            <form id="managerPasswordForm">
+                <div class="form-group">
+                    <label data-en="Manager Password:" data-bn="ম্যানেজার পাসওয়ার্ড:">Manager Password:</label>
+                    <input type="password" id="managerPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="save-btn" data-en="Access Panel" data-bn="প্যানেল অ্যাক্সেস">Access Panel</button>
+                    <button type="button" class="cancel-btn" id="cancelPasswordBtn" data-en="Cancel" data-bn="বাতিল">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="manager.js"></script>
+    <script src="language.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nayem Restaurant - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="billing.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>Nayem Restaurant</h2>
+        </div>
+        
+        <div class="nav-search">
+            <input type="text" id="searchInput" placeholder="Search products..." data-en="Search products..." data-bn="পণ্য খুঁজুন...">
+            <button id="searchBtn">🔍</button>
+        </div>
+
+        <div class="nav-controls">
+            <button id="themeToggle" class="control-btn">🌙</button>
+            <button id="langToggle" class="control-btn">বাংলা</button>
+            <button id="logoutBtn" class="control-btn" data-en="Logout" data-bn="লগআউট">Logout</button>
+        </div>
+
+        <div class="mobile-menu-toggle" id="mobileMenuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-search">
+            <input type="text" id="mobileSearchInput" placeholder="Search products...">
+            <button id="mobileSearchBtn">🔍</button>
+        </div>
+        <div class="mobile-controls">
+            <button id="mobileThemeToggle" class="control-btn">🌙</button>
+            <button id="mobileLangToggle" class="control-btn">বাংলা</button>
+            <button id="mobileLogoutBtn" class="control-btn">Logout</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Left Side - Content -->
+        <div class="content-area">
+            <!-- User Profile Section -->
+            <div class="profile-section" id="profileSection">
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-image-container">
+                            <img id="profileImage" src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop" alt="Profile">
+                            <input type="file" id="profileImageInput" accept="image/*" style="display: none;">
+                            <button class="change-photo-btn" id="changePhotoBtn">📷</button>
+                        </div>
+                        <div class="profile-info">
+                            <h3 id="profileName">John Doe</h3>
+                            <p id="profileEmail">john@example.com</p>
+                        </div>
+                        <button class="edit-profile-btn" id="editProfileBtn" data-en="Edit Profile" data-bn="প্রোফাইল সম্পাদনা">Edit Profile</button>
+                    </div>
+                    
+                    <div class="profile-details" id="profileDetails">
+                        <div class="detail-item">
+                            <label data-en="Phone:" data-bn="ফোন:">Phone:</label>
+                            <span id="profilePhone">+880 1234567890</span>
+                        </div>
+                        <div class="detail-item">
+                            <label data-en="Role:" data-bn="ভূমিকা:">Role:</label>
+                            <span id="profileRole">Staff</span>
+                        </div>
+                        <div class="detail-item">
+                            <label data-en="Joined:" data-bn="যোগদান:">Joined:</label>
+                            <span id="profileJoined">January 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Navigation -->
+            <div class="category-nav">
+                <button class="category-btn active" data-category="breakfast" data-en="Breakfast" data-bn="নাস্তা">Breakfast</button>
+                <button class="category-btn" data-category="lunch" data-en="Lunch" data-bn="দুপুরের খাবার">Lunch</button>
+                <button class="category-btn" data-category="dinner" data-en="Dinner" data-bn="রাতের খাবার">Dinner</button>
+                <button class="category-btn" data-category="snacks" data-en="Snacks" data-bn="নাস্তা">Snacks</button>
+                <button class="category-btn" data-category="beverages" data-en="Beverages" data-bn="পানীয়">Beverages</button>
+            </div>
+
+            <!-- Products Display -->
+            <div class="products-container" id="productsContainer">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Right Side - Billing Interface -->
+        <div class="billing-sidebar">
+            <div class="billing-header">
+                <h3 data-en="Current Order" data-bn="বর্তমান অর্ডার">Current Order</h3>
+                <div class="billing-date-time" id="billingDateTime"></div>
+            </div>
+
+            <!-- Customer Info -->
+            <div class="customer-section">
+                <div class="input-group">
+                    <input type="text" id="customerName" placeholder="Customer Name" data-en="Customer Name" data-bn="গ্রাহকের নাম">
+                </div>
+                <div class="input-group">
+                    <input type="tel" id="customerPhone" placeholder="Phone Number" data-en="Phone Number" data-bn="ফোন নম্বর">
+                </div>
+                <div class="bill-number">
+                    <span data-en="Bill #:" data-bn="বিল #:">Bill #:</span>
+                    <span id="billNumber"></span>
+                </div>
+            </div>
+
+            <!-- Cart Items -->
+            <div class="cart-items" id="cartItems">
+                <div class="empty-cart" data-en="No items in cart" data-bn="কার্টে কোন আইটেম নেই">No items in cart</div>
+            </div>
+
+            <!-- Bill Summary -->
+            <div class="bill-summary">
+                <div class="summary-row">
+                    <span data-en="Subtotal:" data-bn="উপমোট:">Subtotal:</span>
+                    <span id="subtotal">৳0.00</span>
+                </div>
+                <div class="summary-row">
+                    <span data-en="Tax (5%):" data-bn="কর (৫%):">Tax (5%):</span>
+                    <span id="tax">৳0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span data-en="Total:" data-bn="মোট:">Total:</span>
+                    <span id="total">৳0.00</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="billing-actions">
+                <button class="action-btn generate-btn" id="generateBillBtn" data-en="Generate Bill (Ctrl+G)" data-bn="বিল তৈরি করুন (Ctrl+G)">Generate Bill (Ctrl+G)</button>
+                <button class="action-btn clear-btn" id="clearCartBtn" data-en="Clear Cart (Ctrl+C)" data-bn="কার্ট পরিষ্কার (Ctrl+C)">Clear Cart (Ctrl+C)</button>
+                <button class="action-btn print-btn" id="printBillBtn" data-en="Print (Ctrl+P)" data-bn="প্রিন্ট (Ctrl+P)">Print (Ctrl+P)</button>
+            </div>
+
+            <!-- Bill History Search -->
+            <div class="bill-search">
+                <div class="input-group">
+                    <input type="text" id="billSearchInput" placeholder="Search bill by number" data-en="Search bill by number" data-bn="বিল নম্বর দিয়ে খুঁজুন">
+                    <button id="searchBillBtn" data-en="Search" data-bn="খুঁজুন">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Manager Access Button -->
+    <button class="manager-access-btn" id="managerAccessBtn" data-en="Manager Panel" data-bn="ম্যানেজার প্যানেল">Manager Panel</button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Nayem Restaurant</h4>
+                <p data-en="Luxury accommodation with exceptional service" data-bn="ব্যতিক্রমী সেবা সহ বিলাসবহুল আবাসন">Luxury accommodation with exceptional service</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-en="Contact" data-bn="যোগাযোগ">Contact</h4>
+                <p>📍SUST Gate, Sylhet</p>
+                <p>📧 nayem@gmail.com</p>
+                <p>📞 01783062908</p>
+            </div>
+            <div class="footer-section">
+                <h4 data-en="Follow Us" data-bn="আমাদের অনুসরণ করুন">Follow Us</h4>
+                <div class="social-links">
+                    <a href="#">📘</a>
+                    <a href="#">📷</a>
+                    <a href="#">🐦</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="dashboard.js"></script>
+    <script src="billing.js"></script>
+    <script src="products.js"></script>
+    <script src="language.js"></script>
+    <script src="theme.js"></script>
+</body>
+</html>

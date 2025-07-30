@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nayem Restaurant - Login</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+    <div class="particles-bg" id="particles-bg"></div>
+    
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Nayem Restaurant</h1>
+                <div class="language-toggle">
+                    <button id="langToggle" class="lang-btn">বাংলা</button>
+                </div>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signInForm" class="auth-form active">
+                <h2 data-en="Sign In" data-bn="সাইন ইন">Sign In</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <input type="email" id="loginEmail" required>
+                        <label data-en="Email" data-bn="ইমেইল">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="loginPassword" required>
+                        <label data-en="Password" data-bn="পাসওয়ার্ড">Password</label>
+                    </div>
+                    <button type="submit" class="auth-btn" data-en="Sign In" data-bn="সাইন ইন">Sign In</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#" id="showSignUp" data-en="Don't have an account? Sign Up" data-bn="অ্যাকাউন্ট নেই? সাইন আপ করুন">Don't have an account? Sign Up</a>
+                    <a href="#" id="showForgotPassword" data-en="Forgot Password?" data-bn="পাসওয়ার্ড ভুলে গেছেন?">Forgot Password?</a>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signUpForm" class="auth-form">
+                <h2 data-en="Sign Up" data-bn="সাইন আপ">Sign Up</h2>
+                <form id="registerForm">
+                    <div class="input-group">
+                        <input type="text" id="registerName" required>
+                        <label data-en="Full Name" data-bn="পূর্ণ নাম">Full Name</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="registerEmail" required>
+                        <label data-en="Email" data-bn="ইমেইল">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="registerPhone" required>
+                        <label data-en="Phone Number" data-bn="ফোন নম্বর">Phone Number</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="registerPassword" required>
+                        <label data-en="Password" data-bn="পাসওয়ার্ড">Password</label>
+                        <div class="password-strength" id="passwordStrength"></div>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="confirmPassword" required>
+                        <label data-en="Confirm Password" data-bn="পাসওয়ার্ড নিশ্চিত করুন">Confirm Password</label>
+                    </div>
+                    <button type="submit" class="auth-btn" data-en="Sign Up" data-bn="সাইন আপ">Sign Up</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#" id="showSignIn" data-en="Already have an account? Sign In" data-bn="ইতিমধ্যে অ্যাকাউন্ট আছে? সাইন ইন">Already have an account? Sign In</a>
+                </div>
+            </div>
+
+            <!-- Forgot Password Form -->
+            <div id="forgotPasswordForm" class="auth-form">
+                <h2 data-en="Reset Password" data-bn="পাসওয়ার্ড রিসেট">Reset Password</h2>
+                <form id="resetForm">
+                    <div class="input-group">
+                        <input type="email" id="resetEmail" required>
+                        <label data-en="Email" data-bn="ইমেইল">Email</label>
+                    </div>
+                    <button type="submit" class="auth-btn" data-en="Send Reset Link" data-bn="রিসেট লিংক পাঠান">Send Reset Link</button>
+                </form>
+                <div class="auth-links">
+                    <a href="#" id="backToSignIn" data-en="Back to Sign In" data-bn="সাইন ইনে ফিরে যান">Back to Sign In</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="particles.js"></script>
+    <script src="auth.js"></script>
+    <script src="language.js"></script>
+</body>
+</html>
